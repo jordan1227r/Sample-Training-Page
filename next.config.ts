@@ -4,7 +4,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
   output: 'export',
-  basePath: isProd ? '/your-repo-name' : '',
+  basePath: isProd ? '/Sample-Training-Page' : '',
   images: {
     unoptimized: true,
   },
