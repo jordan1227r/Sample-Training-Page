@@ -66,7 +66,15 @@ function StatusBadge({ status, label }) {
 
     return(
         <div>
-            Future Active Trainings Page
+             <Typography
+                component="h1"
+                variant="h6"
+                align='center'
+                sx={{ width: '100%', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+            >
+                        Future Active Trainings Page
+            </Typography>
+            
             <Box alignContent={"center"} justifyContent={"center"}>
             <Grid container spacing={3} sx={{alignContent:'center', justifyContent:'center'}} >
                 <Grid item>
@@ -94,16 +102,22 @@ function StatusBadge({ status, label }) {
             <br/>
             <Grid container sx={{alignContent:'center', justifyContent:'center'}} spacing={2}>
                 <Grid item>
-                    <Card sx={{width:500, minWidth:500, height:500, minHeight:500}} variant = "outlined">
+                    <Card sx={{width:500, minWidth:500, height:500, minHeight:500,
+                         }} variant = "outlined">
                         {/* description of training procedure*/ }
                          <Typography
                             component="h2"
                             variant="h5"
+                            align="center"
                             sx={{ width: '100%'}}
                         >
-                    Training Details
-                    </Typography>
-                    {selectedTraining.description}
+                            Training Details
+                        </Typography>
+                        <Box sx={{maxHeight:400, overflowY:'auto'}}>
+                        <Typography align="center" variant="body2" sx={{ whiteSpace: 'pre-line' }}>
+                            {selectedTraining.description}
+                        </Typography>
+                        </Box>
                     </Card>
                 </Grid>
                 <Grid item>
@@ -128,9 +142,12 @@ function StatusBadge({ status, label }) {
                         </Table>
                     </Card>
                 </Grid>
-            </Grid>
-            <br/>
+                <Grid item size={{ xs: 6 }} sx={{ textAlign: 'center' }}>
+                    <br/>
             <Button onClick = {() => setPage("Home")}>Home</Button>
+                </Grid>
+            </Grid>
+            
             </Box>
         </div>
     )
