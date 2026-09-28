@@ -100,13 +100,13 @@ const HomePage = ({setPage}) => {
 export const TrainingsPage = () => {
 
     const employees = [
-        {employeeId: 1, name: "Ozzy Robinson", title: "production", role: "Assembler", trainings: [{trainingId: 1, name:"lensing", status: "journeyman", inProgress: false}]},
-        {employeeId: 2, name: "Maverick Robinson", title: "Manager", role: "Manager", trainings: [{trainingId:1, name:"lensing", status: "master", inProgress: false},
-                                                                               {trainingId:2, name: "labeling", status: "master", inProgress: false},
-                                                                               {trainingId:3, name: "Alignment", status: "permitted", inProgress: true}]},
-        {employeeId: 3, name: "Jordan Robinson", title: "bestest in the westest", role: "Technician", trainings: [{trainingId:1, name:"lensing", status: "master", inProgress: false},
-                                                                               {trainingId:2, name: "labeling", status: "trainee", inProgress: true},
-                                                                               {trainingId:3, name: "Alignment", status: "permitted", inProgress: true}]}
+        {employeeId: 1, name: "Ozzy Robinson", title: "production", role: "Assembler", trainings: [{trainingId: 1, name:"lensing", status: "journeyman", inProgress: false, notes:"sample note"}]},
+        {employeeId: 2, name: "Maverick Robinson", title: "Manager", role: "Manager", trainings: [{trainingId:1, name:"lensing", status: "master", inProgress: false, notes:"sample note"},
+                                                                               {trainingId:2, name: "labeling", status: "master", inProgress: false, notes:"sample note"},
+                                                                               {trainingId:3, name: "Alignment", status: "permitted", inProgress: true, notes:"sample note"}]},
+        {employeeId: 3, name: "Jordan Robinson", title: "bestest in the westest", role: "Technician", trainings: [{trainingId:1, name:"lensing", status: "master", inProgress: false, notes:"sample note"},
+                                                                               {trainingId:2, name: "labeling", status: "trainee", inProgress: true, notes:"sample note"},
+                                                                               {trainingId:3, name: "Alignment", status: "permitted", inProgress: true, notes:"sample note"}]}
     ]
 
     const trainings = [
@@ -187,7 +187,7 @@ return(
     <>
         {page ==="Home" && <HomePage setPage={setPage}/>}
         {page === "ActiveTrainings" && <ActiveTrainings setPage={setPage} trainings={trainings} employees={employees}/>}
-        {page === "EmployeeTrainings" && <EmployeeTrainings setPage={setPage}/>}
+        {page === "EmployeeTrainings" && <EmployeeTrainings setPage={setPage} employees={employees}/>}
         {page === "NewTraining" && <NewTrainings setPage={setPage}/>}
     </>
 )
