@@ -1,7 +1,31 @@
 import { useState, useEffect } from "react";
 import { Button, Typography, Table, Card,
      Grid, Box, Select, MenuItem, TableHead, 
-     TableBody, TableCell, TableRow } from "@mui/material";
+     TableBody, TableCell, TableRow, Chip } from "@mui/material";
+
+const STATUS_STYLES = {
+  true: { bg: "#fef3c7", text: "#92400e" },
+  false: { bg: "#dcfce7", text: "#166534" }
+};
+ 
+function StatusBadge({ status, label }) {
+  //const value = status ?? label;
+  const colors = STATUS_STYLES[status] ?? { bg: "#e5e5e5", text: "#404040" };
+ 
+  return (
+    <Chip
+      label={label}
+      size="small"
+      sx={{
+        backgroundColor: colors.bg,
+        color: colors.text,
+        fontWeight: 500,
+        fontSize: "0.75rem",
+        height: "22px",
+      }}
+    />
+  );
+}
 
 const SelectEmployee = ({employees, setEmployee, selectedEmployee, setEmployeeData}) => {
     //console.log(employees)
@@ -37,6 +61,7 @@ const EmployeeTable = ({employeeData}) => {
                 Title: {employeeData.title}
             </Typography>
             <Table sx={{ width: '75%', mx: 'auto' }}>
+                <caption>Orange status indicates training in progress</caption>
                 <TableHead>
                     <TableRow>
                         <TableCell>Training</TableCell>
@@ -48,7 +73,9 @@ const EmployeeTable = ({employeeData}) => {
                     {employeeData.trainings.map((t) =>(
                         <TableRow key={t.trainingId}>
                             <TableCell>{t.name}</TableCell>
-                            <TableCell>{t.status}</TableCell>
+                            <TableCell>
+                                <StatusBadge status={t.inProgress} label={t.status} />
+                            </TableCell>
                             <TableCell>{t.notes}</TableCell>
                         </TableRow>
                     ))}
